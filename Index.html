@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sankey Diagram Visualization</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #sankey-diagram {
+            width: 80%;
+            height: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Sankey Diagram Visualization</h2>
+    <div id="sankey-diagram"></div>
+
+    <script>
+        var data = {
+            type: "sankey",
+            orientation: "h",
+            node: {
+                pad: 15,
+                thickness: 20,
+                line: { color: "black", width: 0.5 },
+                label: ["Intracranial Volume", "Brain", "CSF", "Gray Matter", "White Matter"],
+                color: ["blue", "green", "red", "purple", "orange"]
+            },
+            link: {
+                source: [0, 0, 1, 1],  // Mapping sources
+                target: [1, 2, 3, 4],  // Mapping targets
+                value: [50, 30, 20, 30] // Flow values
+            }
+        };
+
+        var layout = {
+            title: "Sankey Diagram",
+            font: { size: 12 }
+        };
+
+        Plotly.newPlot("sankey-diagram", [data], layout);
+    </script>
+</body>
+</html>
